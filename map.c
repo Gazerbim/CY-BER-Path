@@ -2,6 +2,37 @@
 
 
 
+void printMapRed(Cell ** map, int x, int y,int cible){ // Print the map : if a robot and a target are on the same cell, only the robot will be printed
+    printf("\033[H\033[2J"); // clear the screen
+    //printf("\x1b[44m"); //change the background color
+    for(int i = 0; i<y; i++){
+        for(int j = 0; j<x; j++){
+            if (map[i][j].robot>0){
+                if (map[i][j].robot==1){
+                    printf("\U0001F916");
+                }else if (map[i][j].robot==2){
+                    printf("\U0001F47E");
+                }else if (map[i][j].robot==3){
+                    printf("\U0001F47D");
+                }else if (map[i][j].robot==4){
+                    printf("\U0001F47B");
+                }
+	    }else if (map[i][j].target==cible){
+		printf(RED_TEXT "%d" RESET_TEXT,map[i][j].target);
+            }else if (map[i][j].target>=10){
+                printf("%d", map[i][j].target);
+            }else if (map[i][j].target>0){
+                printf("%d ", map[i][j].target);
+            }else if (map[i][j].wall){
+                printf("\u2588\u2588");
+            }else{
+                printf("  ");
+            }
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
 
 
 void printMap(Cell ** map, int x, int y){ // Print the map : if a robot and a target are on the same cell, only the robot will be printed
