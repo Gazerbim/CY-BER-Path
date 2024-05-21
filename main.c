@@ -1,33 +1,34 @@
 #include "fonction.h"
 
 int main(){
-	srand(time(NULL));
-	int nb_joueur,nb_manche,verification;
+	srand(time(NULL));//initialisation of the random seed
+	printf("BIENVENUE DANS CY-BERPATH!\n\n\n\n");
+	int nb_players,nb_games,verification;
 	do{
-		printf("combien de joueur vont jouer ");
-		scanf("%d",&nb_joueur);
-		if(nb_joueur>0){
+		printf("Combien de joueur(s) vont jouer ?: ");
+		scanf("%d",&nb_players);
+		if(nb_players>0){
 			verification=1;
 		}
 		else{
 			verification=0;
 			while(getchar() != '\n'); //flushes the input buffer until a newline character ('\n') is encountered
-            		printf("Veuillez saisir un nombre valide supérieur à 0.\n");
+            		printf(" /!\ Veuillez saisir un nombre valide supérieur à 0. /!\\n");
 		}
 	}while(verification!=1);
-	int nmb_lettre;
+	int nmb_letter;
 	char *p=NULL;
 	char prenom[100];
-	char **nom=malloc(nb_joueur*sizeof(char*));
-	if(nom==NULL){
-		printf("Tab malloc failed, exiting the game\n");
+	char **names=malloc(nb_players*sizeof(char*)); //malloc of the names array
+	if(names==NULL){
+		printf("L'allocation du tableau a planté, le programme va se fermer.\n");
 		exit(1);
 	}
-	for(int i=0;i<nb_joueur;i++){
-		printf("saisir le %d eme joueur\n",i+1);
+	for(int i=0;i<nb_players;i++){
+		printf("Saisir le pseudo du %deme joueur :",i+1);
 		scanf("%s",prenom);
-		nmb_lettre=strlen(prenom);
-		p=malloc((nmb_lettre+1)*sizeof(char));
+		nmb_letter=strlen(prenom);
+		p=malloc((nmb_letter+1)*sizeof(char));
 		if(p==NULL){
 			exit(i+2);
 		}
@@ -37,35 +38,34 @@ int main(){
 			j++;
 		}
 		p[j]='\0';
-		nom[i]=p;
+		names[i]=p;
 	}
 
-	for(int i=0;i<nb_joueur;i++);
+	for(int i=0;i<nb_players;i++);
 	do{
-		printf("\nCombien de manche voulez vous faire ?\n");
-		scanf("%d",&nb_manche);
-		if(nb_manche>0){
+		printf("\nCombien de manche(s) voulez vous faire ?:");
+		scanf("%d",&nb_games);
+		if(nb_games>0){
 			verification=1;
 		}
 		else{
 			verification=0;
 			while(getchar() != '\n'); //flushes the input buffer until a newline character ('\n') is encountered
-            		printf("Veuillez saisir un nombre valide supérieur à 0.\n");
+            		printf("/!\ Veuillez saisir un nombre valide superieur à 0. /!\\n");
 		}
 	}while(verification!=1);
-	int *tabScore=malloc(nb_joueur*sizeof(int)); //for stock the score of player
+	int *tabScore=malloc(nb_players*sizeof(int)); //to store the scores of the players
 	if(tabScore==NULL){
-		printf("Tab malloc failed, exiting the game\n");
-		exit(1);
+		printf("L'alloc n'a pas réussi, le programme va se fermer.\n");
+		exit(5);
 	}
-	for(int i=0;i<nb_joueur;i++){
+	for(int i=0;i<nb_players;i++){
 		tabScore[i]=0;
 	}
-	for (int i=nb_manche;i>0;i--){
-		game(nb_joueur,tabScore,nb_manche-i+1,nom);
+	for (int i=nb_games;i>0;i--){
+		game(nb_players,tabScore,nb_games-i+1,names);
 	}
-	finalMessage(nom,tabScore,nb_joueur);
-
+	finalMessage(names,tabScore,nb_players); //print the final message.
 
 	return 0;
 }
