@@ -75,14 +75,14 @@ int moveInDirection(Cell** map, int lenghtMap,int widthMap, int targ,int numRobo
     int y=0;
     int safeCoord=findRobot(map, &x, &y,lenghtMap,widthMap, numRobot);
     if (safeCoord=0){
-        printf("erreur : Robot non trouve");
+        printf("Erreur : Robot non trouvé, le jeu va se fermer.");
         exit(1);
     }
     int Rx=x; // new coordinates of the robot
     int Ry=y; // ----------------------------
     //commence la boucle pour bouger
     int checkEnd=0;
-    printf("direction ?");
+    printf("Entrez la direction vers laquelle le robot va aller :\n\nHaut = z\nGauche = q\nDroite = d\nBas = s\nAbandonner = *\nReponse : ");
     char dir;
     scanf(" %c",&dir); // get the value from the direction
     while (checkEnd==0){
@@ -128,7 +128,7 @@ int moveInDirection(Cell** map, int lenghtMap,int widthMap, int targ,int numRobo
 
 int abandon(char a){
 	if(a=='*'){
-		printf("\nvous avez décidé d'abandonner la partie !\n");
+		printf("\nVous avez décidé d'abandonner la partie !\n");
 		return 0;
 	}
 	return 1;
@@ -139,7 +139,7 @@ int moveTurn(Cell ** map, int targ, int lenghtMap, int widthMap, int numRobot ){
     while (endGame!=1){
         endGame=moveInDirection(map, lenghtMap,widthMap, targ, numRobot);
 	if (endGame==-1){
-	printf("\n vous avez décidé d'abandonner la partie \n");
+	printf("\n Vous avez décidé d'abandonner la partie \n");
         return -1;//the player didn't manage to find the path
 	}
         if(endGame!=2){
