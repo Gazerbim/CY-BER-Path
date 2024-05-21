@@ -3,7 +3,7 @@
 int main(){
 	srand(time(NULL));//initialisation of the random seed
 	int nb_players,nb_games,verification;
-	printf("\033[H\033[2JBIENVENUE DANS CY-BERPATH!\n\n\n");
+	printf("\033[H\033[2J===========BIENVENUE DANS CY-BERPATH!===========\n\n\n");
 	do{
 		printf("Combien de joueur(s) vont jouer ?: ");
 		scanf("%d",&nb_players);
