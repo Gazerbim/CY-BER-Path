@@ -63,40 +63,46 @@ int harder(){ // choose the difficulty between 3
 	}
 }
 
-int play(int nb_joueur, int *best,char **nom){ //decide who play this party(who wrote the least number of moves)
-	int tab[nb_joueur];
-	int verification;
-	for (int i=0;i<nb_joueur;i++){
-	    printf("\033[H\033[2J===========CHOIX DU NOMBRE D'ETAPES===========\n\n\n");
-		do{
-            printf("\n%s entrez le nombre de mouvements à faire avant d'atteindre la cible voulue (écrivez -1 si la cible n'est pas atteignable):",nom[i]);
-            scanf("%d",&tab[i]); // number of movements he thinks he is making
-
-            if(tab[i]>0){
-                verification=1;
-            }else if(tab[i]==-1){ // just to see that the case "-1" is when the level isn't possible
-                verification = 1;
-            }else{
-                verification=0;
-                while(getchar() != '\n'); //flushes the input buffer until a newline character ('\n') is encountered
-                printf("\033[H\033[2J===========CHOIX DU NOMBRE D'ETAPES===========\n\n\n");
-                printf("Veuillez saisir un nombre valide supérieur à 0.\n");
-            }
-		}while(verification!=1);
-
-		printf("\033[H\033[2J");  // delete everything so as not to see the response of other players
-	}
-	*best=1215752191;  //max 32b value
-	int player=0;
-	for(int i=0;i<nb_joueur;i++){
-		if(*best>tab[i] && tab[i]!=-1){
-			*best=tab[i]; // keep in memory the lowest score
-			player=i+1; // decide which player will play
-		}
-	}
-	return player;
+void viderBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
 
+
+int play(int nb_joueur, int *best, char **nom) {
+    int tab[nb_joueur];
+    int verification;
+    int input;
+
+    for (int i = 0; i < nb_joueur; i++) {
+        printf("\033[H\033[2J===========CHOIX DU NOMBRE D'ETAPES===========\n\n\n");
+        do {
+            printf("\n%s, entrez le nombre de mouvements à faire avant d'atteindre la cible voulue (écrivez -1 si la cible n'est pas atteignable): ", nom[i]);
+            verification = scanf("%d", &input);
+
+            if (verification == 1 && (input > 0 || input == -1)) {
+                tab[i] = input;
+                break;
+            } else {
+                viderBuffer(); // Vider le buffer d'entrée
+                printf("\033[H\033[2J===========CHOIX DU NOMBRE D'ETAPES===========\n\n\n");
+                printf("Veuillez saisir un nombre valide supérieur à 0 ou -1.\n");
+            }
+        } while (1);
+
+        printf("\033[H\033[2J"); // Effacer l'écran pour ne pas voir les réponses des autres joueurs
+    }
+
+    *best = 1215752191; // Max 32-bit value
+    int player = 0;
+    for (int i = 0; i < nb_joueur; i++) {
+        if (*best > tab[i] && tab[i] != -1) {
+            *best = tab[i]; // Conserver le score le plus bas
+            player = i + 1; // Déterminer quel joueur va jouer
+        }
+    }
+    return player;
+}
 
 
 int gestionPoint(int nb_coup_prevu,int nb_coup_fait,int *tabScore,int player,int nb_joueur){ // give the good number of point
@@ -133,6 +139,7 @@ void showScore(int *tabScore, int nb_joueur,char **nom){ // show score
 	for(int i=0;i<nb_joueur;i++){
 		printf("%s --> %d pts\n",nom[i],tabScore[i]);
 	}
+	sleep(3);
 }
 
 void finalMessage(char **nom, int *tabScore,int nb_joueur){
@@ -195,17 +202,16 @@ void game(int nb_joueur,int *tabScore,int nb_manche,char **nom){ //do one party
 	dif=harder(); //asks for the level of difficulty
 	printf("\nla partie va se lancer dans 2 sec !! \n");
 	sleep(2); //wait 10 sec
-	printMapRed(map,x,y,cible);
-	printf("\nrobot: %s à la cible cible: %d\n",robotEmojis[robot],cible);
+	printMap(map,x,y);
+	printf("\nrobot %s à la cible cible %d\n",robotEmojis[robot],cible);
 	if(chrono(dif)==1){ //call chrono and once the timer ends returns 1
 		printf("\033[H\033[2J"); //delete all
 	}
 	player=play(nb_joueur,&bestScore,nom); // define who play this party
     if (player==0){
-        printf("Tout le monde a dit que le niveau était impossible, alors on va relancer la manche \n%d",player);
-	game(nb_joueur,tabScore,nb_manche,nom);
+        printf("Tout le monde a dit que le niveau était impossible, alors on part pour une nouvelle manche \n",player);
     }else{
-        printMapRed(map,x,y,cible);
+        printMap(map,x,y);
         printf("\%s a annoncer le plus petit chemin avec %d coup, il va donc jouer\n",nom[player-1],bestScore);
         int nb_coup_fait=moveTurn(map, cible, x,y,robot+1);
         gestionPoint(bestScore,nb_coup_fait, tabScore,player,nb_joueur);

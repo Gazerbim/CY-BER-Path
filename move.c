@@ -82,7 +82,7 @@ int moveInDirection(Cell** map, int lenghtMap,int widthMap, int targ,int numRobo
     int Ry=y; // ----------------------------
     //commence la boucle pour bouger
     int checkEnd=0;
-    printf("Entrez la direction vers laquelle le robot va aller :\n\nHaut = z\nGauche = q\nDroite = d\nBas = s\nAbandonner = *\nReponse : ");
+    printf("Entrez la direction vers laquelle le robot va aller :\nHaut = z\nGauche = q\nDroite = d\nBas = s\nAbandonner = *\nReponse : ");
     char dir;
     scanf(" %c",&dir); // get the value from the direction
     while (checkEnd==0){
@@ -108,13 +108,14 @@ int moveInDirection(Cell** map, int lenghtMap,int widthMap, int targ,int numRobo
             }
 	    printf("\033[H\033[2J");
             updateCoord(map, x, y, Rx, Ry, numRobot);
-            printMapRed(map, lenghtMap, widthMap,targ);
+            printMap(map, lenghtMap, widthMap);
 	    x=Rx;
 	    y=Ry;
 	    usleep(50000);
 
         }
     }
+    printMap(map, lenghtMap, widthMap);
     //printf("\033[H\033[2J");
     //updateCoord(map, x, y, Rx, Ry, numRobot);
     //printMap(map, lenghtMap, widthMap);
@@ -144,7 +145,7 @@ int moveTurn(Cell ** map, int targ, int lenghtMap, int widthMap, int numRobot ){
 	}
         if(endGame!=2){
             cpt++;
-	}
+        }
     }
     //printf("\ncompteur : %d\n",cpt);
     return cpt;

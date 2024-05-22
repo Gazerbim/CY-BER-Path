@@ -14,7 +14,7 @@ int main(){
 			verification=0;
 			while(getchar() != '\n'); //flushes the input buffer until a newline character ('\n') is encountered
                     printf("\033[H\033[2JBIENVENUE DANS CY-BERPATH!\n\n\n");
-            		printf(" /!\ Veuillez saisir un nombre valide supérieur à 0. /!\ \n");
+            		printf("! Veuillez saisir un nombre valide supérieur à 0. ! \n");
 		}
 	}while(verification!=1);
 	int nmb_letter;
@@ -47,7 +47,7 @@ int main(){
 	for(int i=0;i<nb_players;i++);
 	do{
         printf("\033[H\033[2JBIENVENUE DANS CY-BERPATH!\n\n\n");
-		printf("\nCombien de manche(s) voulez vous faire ?:");
+		printf("Combien de manche(s) voulez vous faire ?:");
 		scanf("%d",&nb_games);
 		if(nb_games>0){
 			verification=1;
@@ -56,7 +56,7 @@ int main(){
 			verification=0;
 			while(getchar() != '\n'); //flushes the input buffer until a newline character ('\n') is encountered
                     printf("\033[H\033[2JBIENVENUE DANS CY-BERPATH!\n\n\n");
-            		printf("/!\ Veuillez saisir un nombre valide superieur à 0. /!\\n");
+            		printf(" ! Veuillez saisir un nombre valide superieur à 0. !\n");
 		}
 	}while(verification!=1);
 	int *tabScore=malloc(nb_players*sizeof(int)); //to store the scores of the players
