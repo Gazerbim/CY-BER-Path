@@ -203,7 +203,7 @@ void game(int nb_joueur,int *tabScore,int nb_manche,char **nom){ //do one party
 	}
 	player=play(nb_joueur,&bestScore,nom); // define who play this party
     if (player==0){
-        printf("Tout le monde a dit que le niveau était impossible, alors on part pour une nouvelle manche \n",player);
+        printf("Tout le monde a dit que le niveau était impossible, alors on part pour une nouvelle manche \n");
     }else{
         printMap(map,x,y);
         printf("\%s a annoncer le plus petit chemin avec %d coup, il va donc jouer\n",nom[player-1],bestScore);
