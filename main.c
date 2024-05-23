@@ -1,5 +1,58 @@
 #include "fonction.h"
 
+void printRobot() {
+    for(int i=0;i<10;i++){
+        printf("   ____    \n");
+        printf("  | o o|   \n");
+        printf("  |  ^ |   \n");
+        printf("  | [_]|   \n");
+        printf("  |____|   \n");
+        printf("  \\ | | / \n");
+        printf("   \\| |/  \n");
+        printf("    |_|    \n");
+        printf("    / \\   \n");
+        printf("   /   \\  \n");
+        move_cursor(0,30);
+        usleep(300000);  // Pause for 300ms
+        printf("   ____    \n");
+        printf("  | o o|   \n");
+        printf("  |  ^ |   \n");
+        printf("  | [_]|   \n");
+        printf("  |____|   \n");
+        printf("    | |    \n");
+        printf(" ---| |--- \n");
+        printf("    |_|    \n");
+        printf("    / \\   \n");
+        printf("   /   \\  \n");
+        move_cursor(0,30);
+        usleep(300000);  // Pause for 300ms
+        printf("   ____    \n");
+        printf("  | o o|   \n");
+        printf("  |  ^ |   \n");
+        printf("  | [_]|   \n");
+        printf("  |____|   \n");
+        printf("    | |    \n");
+        printf("   /| |\\  \n");
+        printf("  / |_| \\ \n");
+        printf("    / \\   \n");
+        printf("   /   \\  \n");
+        move_cursor(0,30);
+        usleep(300000);  // Pause for 300ms
+        printf("   ____    \n");
+        printf("  | o o|   \n");
+        printf("  |  ^ |   \n");
+        printf("  | [_]|   \n");
+        printf("  |____|   \n");
+        printf("    | |    \n");
+        printf(" ---| |--- \n");
+        printf("    |_|    \n");
+        printf("    / \\   \n");
+        printf("   /   \\  \n");
+        move_cursor(0,30);
+        usleep(300000);  // Pause for 300ms
+    }
+}
+
 int main(){
 	srand(time(NULL));//initialisation of the random seed
 	int nb_players,nb_games,verification;
@@ -90,6 +143,6 @@ int main(){
    
     top10Score(nb_players,Playerss);
     free(Playerss);
-
-	return 0;
+    printRobot();
+    return 0;
 }
