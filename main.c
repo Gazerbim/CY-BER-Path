@@ -72,6 +72,24 @@ int main(){
 		game(nb_players,tabScore,nb_games-i+1,names);
 	}
 	finalMessage(names,tabScore,nb_players); //print the final message.
+	Player *Playerss = malloc(nb_players * sizeof(Player));
+
+    if (Playerss == NULL) {
+        printf("Erreur d'allocation de mémoire\n");
+        return 1;
+    }
+
+    for (int i = 0; i < nb_players; i++) {
+	int j = 0;
+        while (names[i][j] != '\0' && j < 49) {  // Limit to 49 characters to avoid buffer overflow
+            Playerss[i].name[j] = names[i][j];
+            j++;
+        } 
+	Playerss[i].score = tabScore[i];
+    }
+   
+    top10Score(nb_players,Playerss);
+    free(Playerss);
 
 	return 0;
 }
