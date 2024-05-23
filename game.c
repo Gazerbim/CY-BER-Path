@@ -33,7 +33,8 @@ int harder(){ // choose the difficulty between 3
 		}
 		else{
 			verification=0;
-			while(getchar() != '\n'); //flushes the input buffer until a newline character ('\n') is encountered
+			viderBuffer();
+			
                 printf("\033[H\033[2J===========CHOIX DE LA DIFFICULTE===========\n\n\n");
                 printf("Veuillez saisir un nombre valide entre 1 et 3.\n");
 		}
