@@ -12,7 +12,7 @@ int main(){
 		}
 		else{
 			verification=0;
-			while(getchar() != '\n'); //flushes the input buffer until a newline character ('\n') is encountered
+			viderBuffer(); 
                     printf("\033[H\033[2J===========BIENVENUE DANS CY-BERPATH!===========\n\n\n");
             		printf("! Veuillez saisir un nombre valide supérieur à 0. ! \n");
 		}
@@ -54,7 +54,7 @@ int main(){
 		}
 		else{
 			verification=0;
-			while(getchar() != '\n'); //flushes the input buffer until a newline character ('\n') is encountered
+			viderBuffer(); 
                     printf("\033[H\033[2J===========BIENVENUE DANS CY-BERPATH!===========\n\n\n");
             		printf(" ! Veuillez saisir un nombre valide superieur à 0. !\n");
 		}
