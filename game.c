@@ -1,6 +1,61 @@
 
 #include "fonction.h"
 
+void move_cursor(int row, int col) {
+    printf("\e[%d;%dH", row, col);
+}
+void printRobot() {
+    for(int i=0;i<10;i++){
+        printf("   ____    \n");
+        printf("  | o o|   \n");
+        printf("  |  ^ |   \n");
+        printf("  | [_]|   \n");
+        printf("  |____|   \n");
+        printf("  \\ | | / \n");
+        printf("   \\| |/  \n");
+        printf("    |_|    \n");
+        printf("    / \\   \n");
+        printf("   /   \\  \n");
+        move_cursor(0,30);
+        usleep(300000);  // Pause for 300ms
+        printf("   ____    \n");
+        printf("  | o o|   \n");
+        printf("  |  ^ |   \n");
+        printf("  | [_]|   \n");
+        printf("  |____|   \n");
+        printf("    | |    \n");
+        printf(" ---| |--- \n");
+        printf("    |_|    \n");
+        printf("    / \\   \n");
+        printf("   /   \\  \n");
+        move_cursor(0,30);
+        usleep(300000);  // Pause for 300ms
+        printf("   ____    \n");
+        printf("  | o o|   \n");
+        printf("  |  ^ |   \n");
+        printf("  | [_]|   \n");
+        printf("  |____|   \n");
+        printf("    | |    \n");
+        printf("   /| |\\  \n");
+        printf("  / |_| \\ \n");
+        printf("    / \\   \n");
+        printf("   /   \\  \n");
+        move_cursor(0,30);
+        usleep(300000);  // Pause for 300ms
+        printf("   ____    \n");
+        printf("  | o o|   \n");
+        printf("  |  ^ |   \n");
+        printf("  | [_]|   \n");
+        printf("  |____|   \n");
+        printf("    | |    \n");
+        printf(" ---| |--- \n");
+        printf("    |_|    \n");
+        printf("    / \\   \n");
+        printf("   /   \\  \n");
+        move_cursor(0,30);
+        usleep(300000);  // Pause for 300ms
+    }
+}
 
 
 int chrono(int a){ // initializes a dynamic stopwatch
