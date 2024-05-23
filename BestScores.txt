@@ -1,0 +1,10 @@
+Place1 0
+PLace2 0
+PLace3 0
+place4 0
+PLace5 0
+PLace6 0
+PLace7 0
+Place8 0
+Place9 0
+Place10 0
