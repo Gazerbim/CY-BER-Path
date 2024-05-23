@@ -50,4 +50,6 @@ void showScore(int *tabScore, int nb_joueur,char **nom);
 void finalMessage(char **nom, int *tabScore,int nb_joueur);
 void game(int nb_joueur,int *tabScore,int nb_manche,char **nom);
 void viderBuffer();
+void move_cursor(int row, int col);
+void move_cursor(int row, int col);
 #endif
