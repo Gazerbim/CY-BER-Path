@@ -196,7 +196,8 @@ void game(int nb_joueur,int *tabScore,int nb_manche,char **nom){ //do one party
 	dif=harder(); //asks for the level of difficulty
 	printf("\nla partie va se lancer dans 2 sec !! \n");
 	sleep(2); //wait 10 sec
-	printMap(map,x,y);
+	printMapRed(map,x,y,cible);
+
 	printf("\nrobot %s à la cible cible %d\n",robotEmojis[robot],cible);
 	if(chrono(dif)==1){ //call chrono and once the timer ends returns 1
 		printf("\033[H\033[2J"); //delete all
@@ -205,7 +206,8 @@ void game(int nb_joueur,int *tabScore,int nb_manche,char **nom){ //do one party
     if (player==0){
         printf("Tout le monde a dit que le niveau était impossible, alors on part pour une nouvelle manche \n");
     }else{
-        printMap(map,x,y);
+        printMapRed(map,x,y,cible);
+
         printf("\%s a annoncer le plus petit chemin avec %d coup, il va donc jouer\n",nom[player-1],bestScore);
         int nb_coup_fait=moveTurn(map, cible, x,y,robot+1);
         gestionPoint(bestScore,nb_coup_fait, tabScore,player,nb_joueur);
