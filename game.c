@@ -89,11 +89,25 @@ int play(int nb_joueur, int *best, char **nom) {
 
     *best = 1215752191; // Max 32-bit value
     int player = 0;
+    int count = 0;
+    int j = 0;
+    int count2 =0;
     for (int i = 0; i < nb_joueur; i++) {
         if (*best > tab[i] && tab[i] != -1) {
             *best = tab[i]; // Conserver le score le plus bas
             player = i + 1; // Déterminer quel joueur va jouer
         }
+	if(*best == tab[i]){
+		count++;
+	}
+	
+    }
+    j=rand()%count+0;
+    while(count2 != j){ // if there are several times the lowest score it draws lots who will play
+	    if(*best == tab[count2]){
+		    player=count2+1;
+	    }
+	    count2++;
     }
     return player;
 }
