@@ -49,5 +49,5 @@ int gestionPoint(int nb_coup_prevu,int nb_coup_fait,int *tabScore,int player,int
 void showScore(int *tabScore, int nb_joueur,char **nom);
 void finalMessage(char **nom, int *tabScore,int nb_joueur);
 void game(int nb_joueur,int *tabScore,int nb_manche,char **nom);
-
+void viderBuffer();
 #endif
