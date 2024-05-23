@@ -8,6 +8,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define RED_TEXT "\x1b[31m"
+#define RESET_TEXT "\x1b[0m"
+
+typedef struct{ // definition of a player for save the score 
+    char name[50];
+    int score;
+}Player;
 
 typedef struct{  // definition of a table cell
     int wall;
@@ -15,6 +22,14 @@ typedef struct{  // definition of a table cell
     int robot;
 }Cell;
 
+void top10Score(int nb_players,Player *Playerss);
+void writeBestScore(Player bestplayers[], int count);
+int readBestScore(Player bestplayers[]);
+void showPlayer(Player Playerss[], int n);
+void fusionner(Player tab[], int debut,int milieu, int fin);
+void triFusionRec(Player tab[],int debut,int fin);
+void triFusion(Player tab[], int size);
+void printMapRed(Cell ** map, int x, int y,int cible);
 void printMap(Cell ** map, int x, int y);
 void addBorderWalls(Cell **map, int x,int y);
 Cell ** generateMap(int *x, int *y);
@@ -25,7 +40,7 @@ void placeWallsOnAnEdge(Cell ** map, int x, int y);
 void placeRobots(Cell ** map, int x, int y);
 int checkMove(Cell** map, char dir, int Posx, int Posy );
 int findRobot(Cell ** map, int *x, int *y, int widthMap,int lenghtMap, int numrobot);
-int moveInDirection(Cell** map, int lenghtMap,int widthMap, int targ,int numRobot );
+int moveInDirection(Cell** map, int lenghtMap,int widthMap, int targ,int numRobot);
 int abandon(char a);
 int moveTurn(Cell ** map, int targ, int lenghtMap, int widthMap, int numRobot );
 int chrono(int a);
