@@ -30,7 +30,6 @@ void fusionner(Player tab[], int debut,int milieu, int fin);
 void triFusionRec(Player tab[],int debut,int fin);
 void triFusion(Player tab[], int size);
 void printMapRed(Cell ** map, int x, int y,int cible);
-void printMap(Cell ** map, int x, int y);
 void addBorderWalls(Cell **map, int x,int y);
 Cell ** generateMap(int *x, int *y);
 int verifyTargetPlacement(Cell ** map, int xT, int yT);
