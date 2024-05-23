@@ -58,6 +58,11 @@ void printRobot() {
 }
 
 
+
+#include "fonction.h"
+
+
+
 int chrono(int a){ // initializes a dynamic stopwatch
 	int min;
 	int sec;
@@ -129,7 +134,6 @@ int play(int nb_joueur, int *best, char **nom) {
         do {
             printf("\n%s, entrez le nombre de mouvements à faire avant d'atteindre la cible voulue (écrivez -1 si la cible n'est pas atteignable): ", nom[i]);
             verification = scanf("%d", &input);
-
             if (verification == 1 && (input > 0 || input == -1)) {
                 tab[i] = input;
                 break;
@@ -146,25 +150,32 @@ int play(int nb_joueur, int *best, char **nom) {
     *best = 1215752191; // Max 32-bit value
     int player = 0;
     int count = 0;
-    int j = 0;
-    int count2 =0;
     for (int i = 0; i < nb_joueur; i++) {
         if (*best > tab[i] && tab[i] != -1) {
             *best = tab[i]; // Conserver le score le plus bas
             player = i + 1; // Déterminer quel joueur va jouer
         }
-	if(*best == tab[i]){
+	else if(*best == tab[i] && tab[i] != -1){
 		count++;
 	}
 	
     }
-    j=rand()%count+0;
-    while(count2 != j){ // if there are several times the lowest score it draws lots who will play
-	    if(*best == tab[count2]){
-		    player=count2+1;
-	    }
-	    count2++;
+    if (count > 1) {
+        // if there are several times the lowest score it draws lots who will play
+
+        int j = rand() % count;
+        count = 0;
+        for (int i = 0; i < nb_joueur; i++) {
+            if (tab[i] == *best) {
+                if (count == j) {
+                    player = i + 1;
+                    break;
+                }
+                count++;
+            }
+        }
     }
+
     return player;
 }
 
@@ -262,7 +273,8 @@ void game(int nb_joueur,int *tabScore,int nb_manche,char **nom){ //do one party
 	char *robotEmojis[] = {"\U0001F916", "\U0001F47E", "\U0001F47D", "\U0001F47B"}; //list containing robot emoji
 	robot=rand()%3+1; //define which robot
 	cible=rand()%17+1; // define which target
-	printf("\nManche %d\n",nb_manche);
+	printf("\nMANCHE N°%d\n",nb_manche);
+	sleep(2);
 	dif=harder(); //asks for the level of difficulty
 	printf("\nla partie va se lancer dans 2 sec !! \n");
 	sleep(2); //wait 10 sec
@@ -274,7 +286,9 @@ void game(int nb_joueur,int *tabScore,int nb_manche,char **nom){ //do one party
 	}
 	player=play(nb_joueur,&bestScore,nom); // define who play this party
     if (player==0){
-        printf("Tout le monde a dit que le niveau était impossible, alors on part pour une nouvelle manche \n");
+        printf("Tout le monde a dit que le niveau était impossible, alors on va changer de map et continuer sur cette manche \n");
+	sleep(4);
+	game(nb_joueur,tabScore,nb_manche,nom);
     }else{
         printMapRed(map,x,y,cible);
 
