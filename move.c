@@ -83,6 +83,7 @@ int moveInDirection(Cell** map, int lenghtMap,int widthMap, int targ,int numRobo
     //commence la boucle pour bouger
     int checkEnd=0;
     printf("Entrez la direction vers laquelle le robot va aller :\nHaut = z\nGauche = q\nDroite = d\nBas = s\nAbandonner = *\nReponse : ");
+    viderBuffer();
     char dir;
     scanf(" %c",&dir); // get the value from the direction
     while (checkEnd==0){
