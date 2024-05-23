@@ -116,7 +116,7 @@ int moveInDirection(Cell** map, int lenghtMap,int widthMap, int targ,int numRobo
 
         }
     }
-    printMap(map, lenghtMap, widthMap);
+    printMapRed(map,lenghtMap,widthMap,targ);
     //printf("\033[H\033[2J");
     //updateCoord(map, x, y, Rx, Ry, numRobot);
     //printMap(map, lenghtMap, widthMap);
