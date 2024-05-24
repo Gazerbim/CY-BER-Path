@@ -82,7 +82,11 @@ int moveInDirection(Cell** map, int lenghtMap,int widthMap, int targ,int numRobo
     int Ry=y; // ----------------------------
     //start the loop to move
     int checkEnd=0;
-    printf("Entrez la direction vers laquelle le robot va aller :\nHaut = z\nGauche = q\nDroite = d\nBas = s\nAbandonner = *\nReponse : ");
+    printf("                                                          [z]     \n");
+    printf("                                                           ^      \n");
+    printf("Entrez la direction vers laquelle le robot va aller :[q] <   > [d]  * : Abandonner\n");
+    printf("                                                           v      \n");
+    printf("                                                          [s]     \n");
     viderBuffer(); // select only the 1st character in case the player inputs more than 1 caracter.
     char dir;
     scanf(" %c",&dir); // get the value for the direction
