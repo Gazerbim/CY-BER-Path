@@ -5,8 +5,8 @@ void move_cursor(int row, int col) {
     printf("\e[%d;%dH", row, col);
 }
 void printRobot() {
-    move_cursor(35,0);
     for(int i=0;i<10;i++){
+	move_cursor(30,0);
         printf("   ____    \n");
         printf("  | o o|   \n");
         printf("  |  ^ |   \n");
@@ -17,7 +17,7 @@ void printRobot() {
         printf("    |_|    \n");
         printf("    / \\   \n");
         printf("   /   \\  \n");
-        move_cursor(35,0);
+        move_cursor(30,0);
         usleep(300000);  // Pause for 300ms
         printf("   ____    \n");
         printf("  | o o|   \n");
@@ -29,7 +29,7 @@ void printRobot() {
         printf("    |_|    \n");
         printf("    / \\   \n");
         printf("   /   \\  \n");
-        move_cursor(35,0);
+        move_cursor(30,0);
         usleep(300000);  // Pause for 300ms
         printf("   ____    \n");
         printf("  | o o|   \n");
@@ -41,7 +41,7 @@ void printRobot() {
         printf("  / |_| \\ \n");
         printf("    / \\   \n");
         printf("   /   \\  \n");
-        move_cursor(35,0);
+        move_cursor(30,0);
         usleep(300000);  // Pause for 300ms
         printf("   ____    \n");
         printf("  | o o|   \n");
@@ -53,7 +53,6 @@ void printRobot() {
         printf("    |_|    \n");
         printf("    / \\   \n");
         printf("   /   \\  \n");
-        move_cursor(35,0);
         usleep(300000);  // Pause for 300ms
     }
 }
@@ -95,7 +94,7 @@ int harder(){ // choose the difficulty between 3
 		else{
 			verification=0;
 			viderBuffer();
-			
+
                 printf("\033[H\033[2J===========CHOIX DE LA DIFFICULTE===========\n\n\n");
                 printf("Veuillez saisir un nombre valide entre 1 et 3.\n");
 		}
@@ -159,7 +158,7 @@ int play(int nb_joueur, int *best, char **nom) {
 	else if(*best == tab[i] && tab[i] != -1){
 		count++;
 	}
-	
+
     }
     if (count > 1) {
         // if there are several times the lowest score it draws lots who will play
@@ -215,11 +214,13 @@ void showScore(int *tabScore, int nb_joueur,char **nom){ // show score
 	for(int i=0;i<nb_joueur;i++){
 		printf("%s --> %d pts\n",nom[i],tabScore[i]);
 	}
-	sleep(3);
+	printf("\nAppuiyez sur entrée pour continuer...\n");
+    getchar(); // a first getchar to empty the buffer
+    getchar(); // a second to wait for the enter key
 }
 
 void finalMessage(char **nom, int *tabScore,int nb_joueur){
-    printf("===========FIN DE LA PARTIE===========\n\n\n");
+    printf("\033[H\033[2J\n\n===========FIN DE LA PARTIE===========\n\n\n");
 	int max=tabScore[0];
 	int nb_winner=0;
 	for (int i=0;i<nb_joueur;i++){
@@ -245,7 +246,7 @@ void finalMessage(char **nom, int *tabScore,int nb_joueur){
 		}
 	}
 	if(nb_winner>1){
-        printf("\n\n===========FIN DE LA PARTIE===========\n\n\n");
+        printf("\033[H\033[2J\n\n===========FIN DE LA PARTIE===========\n\n\n");
 		printf("\nLes grands gagnants de cette partie sont :\n");
 		for (int i=0;i<nb_winner;i++){
 			printf("%s\n",tab[i]);
@@ -278,10 +279,9 @@ void game(int nb_joueur,int *tabScore,int nb_manche,char **nom){ //do one party
 	sleep(2);
 	dif=harder(); //asks for the level of difficulty
 	printf("\nAppuiyez sur entrée pour démarrer la partie\n");
-    	getchar(); // a first getchar to empty the buffer 
-    	getchar(); // a second to wait for the enter key 
+    getchar(); // a first getchar to empty the buffer
+    getchar(); // a second to wait for the enter key
 	printMapRed(map,x,y,cible);
-
 	printf("\nrobot %s à la cible cible %d\n",robotEmojis[robot],cible);
 	if(chrono(dif)==1){ //call chrono and once the timer ends returns 1
 		printf("\033[H\033[2J"); //delete all
