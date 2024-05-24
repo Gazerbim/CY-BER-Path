@@ -278,7 +278,7 @@ void game(int nb_joueur,int *tabScore,int nb_manche,char **nom){ //do one party
 	printf("\n===========MANCHE N°%d============\n",nb_manche);
 	sleep(2);
 	dif=harder(); //asks for the level of difficulty
-	printf("\nAppuiyez sur entrée pour démarrer la partie\n");
+	printf("\nAppuiyez sur entrée pour démarrer la partie...\n");
     getchar(); // a first getchar to empty the buffer
     getchar(); // a second to wait for the enter key
 	printMapRed(map,x,y,cible);
