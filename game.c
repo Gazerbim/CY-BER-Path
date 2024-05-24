@@ -276,8 +276,9 @@ void game(int nb_joueur,int *tabScore,int nb_manche,char **nom){ //do one party
 	printf("\nMANCHE N°%d\n",nb_manche);
 	sleep(2);
 	dif=harder(); //asks for the level of difficulty
-	printf("\nla partie va se lancer dans 2 sec !! \n");
-	sleep(2); //wait 10 sec
+	printf("\nAppuiyez sur entrée pour démarrer la partie\n");
+    	getchar(); // a first getchar to empty the buffer 
+    	getchar(); // a second to wait for the enter key 
 	printMapRed(map,x,y,cible);
 
 	printf("\nrobot %s à la cible cible %d\n",robotEmojis[robot],cible);
