@@ -279,18 +279,20 @@ void game(int nb_joueur,int *tabScore,int nb_manche,char **nom){ //do one party
 	sleep(2);
 	dif=harder(); //asks for the level of difficulty
 	printf("\nAppuiyez sur entrée pour démarrer la partie...\n");
-    getchar(); // a first getchar to empty the buffer
-    getchar(); // a second to wait for the enter key
+    	getchar(); // a first getchar to empty the buffer
+    	getchar(); // a second to wait for the enter key
 	printMapRed(map,x,y,cible);
-	printf("\nrobot %s à la cible cible %d\n",robotEmojis[robot],cible);
+	printf("\nRobot %s à la cible cible %d\n",robotEmojis[robot],cible);
 	if(chrono(dif)==1){ //call chrono and once the timer ends returns 1
 		printf("\033[H\033[2J"); //delete all
 	}
 	player=play(nb_joueur,&bestScore,nom); // define who play this party
     if (player==0){
-        printf("Tout le monde a dit que le niveau était impossible, alors on va changer de map et continuer sur cette manche \n");
-	sleep(4);
-	game(nb_joueur,tabScore,nb_manche,nom);
+        printf("Tout le monde a dit que le niveau était impossible, alors on va changer de map et continuer sur cette manche\n");
+        printf("\nAppuiyez sur entrée pour continuer...\n");
+        getchar(); // a first getchar to empty the buffer
+        getchar(); // a second to wait for the enter key
+        game(nb_joueur,tabScore,nb_manche,nom);
     }else{
         printMapRed(map,x,y,cible);
 
