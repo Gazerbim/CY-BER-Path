@@ -139,8 +139,9 @@ int moveTurn(Cell ** map, int targ, int lenghtMap, int widthMap, int numRobot ){
     while (endGame!=1){ // while the player didn't reach the target;
         endGame=moveInDirection(map, lenghtMap,widthMap, targ, numRobot);
 	if (endGame==-1){
-	printf("\n Vous avez décidé d'abandonner la partie \n");
-        return -1;//the player didn't manage to find the path
+		printf("\n===================\n Vous avez décidé d'abandonner la partie \n");
+		sleep(1);
+	        return -1;//the player didn't manage to find the path
 	}
         if(endGame!=2){ // will increment the movement counter by 1 with each movement
             cpt++;
