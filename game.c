@@ -5,6 +5,7 @@ void move_cursor(int row, int col) {
     printf("\e[%d;%dH", row, col);
 }
 void printRobot() {
+    move_cursor(35,0);
     for(int i=0;i<10;i++){
         printf("   ____    \n");
         printf("  | o o|   \n");
@@ -16,7 +17,7 @@ void printRobot() {
         printf("    |_|    \n");
         printf("    / \\   \n");
         printf("   /   \\  \n");
-        move_cursor(0,30);
+        move_cursor(35,0);
         usleep(300000);  // Pause for 300ms
         printf("   ____    \n");
         printf("  | o o|   \n");
@@ -28,7 +29,7 @@ void printRobot() {
         printf("    |_|    \n");
         printf("    / \\   \n");
         printf("   /   \\  \n");
-        move_cursor(0,30);
+        move_cursor(35,0);
         usleep(300000);  // Pause for 300ms
         printf("   ____    \n");
         printf("  | o o|   \n");
@@ -40,7 +41,7 @@ void printRobot() {
         printf("  / |_| \\ \n");
         printf("    / \\   \n");
         printf("   /   \\  \n");
-        move_cursor(0,30);
+        move_cursor(35,0);
         usleep(300000);  // Pause for 300ms
         printf("   ____    \n");
         printf("  | o o|   \n");
@@ -52,7 +53,7 @@ void printRobot() {
         printf("    |_|    \n");
         printf("    / \\   \n");
         printf("   /   \\  \n");
-        move_cursor(0,30);
+        move_cursor(35,0);
         usleep(300000);  // Pause for 300ms
     }
 }
