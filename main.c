@@ -26,12 +26,12 @@ int main(){
 	char prenom[100];
 	char **names=malloc(nb_players*sizeof(char*)); //malloc of the names array
 	if(names==NULL){
-        printf("\033[H\033[2J===========BIENVENUE DANS CY-BERPATH!===========\n\n\n");
+        	printf("\033[H\033[2J===========BIENVENUE DANS CY-BERPATH!===========\n\n\n");
 		printf("L'allocation du tableau a planté, le programme va se fermer.\n");
 		exit(1);
 	}
 	for(int i=0;i<nb_players;i++){
-	    printf("\033[H\033[2J===========BIENVENUE DANS CY-BERPATH!===========\n\n\n");
+	    	printf("\033[H\033[2J===========BIENVENUE DANS CY-BERPATH!===========\n\n\n");
 		printf("Saisir le pseudo du %deme joueur :",i+1);
 		scanf("%s",prenom);
 		nmb_letter=strlen(prenom);
