@@ -55,6 +55,7 @@ void printRobot() {
         printf("   /   \\  \n");
         usleep(300000);  // Pause for 300ms
     }
+    move_cursor(40,0);
 }
 
 
