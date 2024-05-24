@@ -274,7 +274,7 @@ void game(int nb_joueur,int *tabScore,int nb_manche,char **nom){ //do one party
 	char *robotEmojis[] = {"\U0001F916", "\U0001F47E", "\U0001F47D", "\U0001F47B"}; //list containing robot emoji
 	robot=rand()%3+1; //define which robot
 	cible=rand()%17+1; // define which target
-	printf("\nMANCHE N°%d\n",nb_manche);
+	printf("\n===========MANCHE N°%d============\n",nb_manche);
 	sleep(2);
 	dif=harder(); //asks for the level of difficulty
 	printf("\nAppuiyez sur entrée pour démarrer la partie\n");
